@@ -1,6 +1,5 @@
 import os
 import tkinter
-from time import sleep
 from tkinter.filedialog import askopenfilename
 
 import cv2

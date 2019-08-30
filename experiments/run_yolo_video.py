@@ -1,12 +1,11 @@
 import os
 import tkinter
-from time import sleep
 from tkinter.filedialog import askopenfilename
 
 import cv2
 
 from tf_yolov3.process_image import YOLOV3
-from tf_yolov3.utils import box_objects, milliseconds, show_images_in_windows
+from tf_yolov3.utils import box_objects, milliseconds
 
 file_dir = os.path.dirname(__file__)
 
