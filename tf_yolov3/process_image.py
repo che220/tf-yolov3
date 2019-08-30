@@ -42,15 +42,15 @@ class YOLOV3:
             [self.return_tensors[1], self.return_tensors[2], self.return_tensors[3]],
             feed_dict={self.return_tensors[0]: image_data}
         )
-
         pred_bbox = np.concatenate([np.reshape(pred_sbbox, (-1, 5 + self.num_classes)),
                                     np.reshape(pred_mbbox, (-1, 5 + self.num_classes)),
                                     np.reshape(pred_lbbox, (-1, 5 + self.num_classes))],
                                    axis=0)
-
         pred_bboxes = self._postprocess(pred_bbox, h, w)
-        pred_bboxes = self._nms(pred_bboxes)
-        classes = self.labels[pred_bboxes[:, 5].astype(np.int8)]
+        classes = np.array([])
+        if pred_bboxes.shape[0] > 0:
+            pred_bboxes = self._nms(pred_bboxes)
+            classes = self.labels[pred_bboxes[:, 5].astype(np.int8)]
         return pred_bboxes, classes
 
     def _postprocess(self, pred_bbox, org_h, org_w):

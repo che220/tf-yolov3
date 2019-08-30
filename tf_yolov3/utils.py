@@ -59,9 +59,9 @@ def box_objects(img, boxes, labels):
         label = labels[i]
         c = colors[label]
         x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
-        cv2.rectangle(tmp_img, (x1, y1), (x2, y2), color=c, thickness=3)
+        cv2.rectangle(tmp_img, (x1, y1), (x2, y2), color=c, thickness=1)
 
         msg = f'{label} {conf:.4f}'
         cv2.putText(tmp_img, msg, (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color=c,
-                    thickness=2)
+                    thickness=1)
     return tmp_img

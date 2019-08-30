@@ -11,7 +11,11 @@ file_dir = os.path.dirname(__file__)
 
 
 if __name__ == '__main__':
+    t0 = milliseconds()
     yolo = YOLOV3()
+    t1 = milliseconds()
+    print(f'init time: {t1-t0} ms')
+
     tkinter.Tk().withdraw()
     while 1:
         image_path = askopenfilename(initialdir="D:/projects/images/objects")
